@@ -11,6 +11,12 @@ dependencies:
   '@astrojs/tailwind':
     specifier: ^5.1.0
     version: 5.1.0(astro@4.5.5)(tailwindcss@3.4.1)
+  '@fontsource/poppins':
+    specifier: ^5.0.12
+    version: 5.0.12
+  '@fontsource/raleway':
+    specifier: ^5.0.17
+    version: 5.0.17
   astro:
     specifier: ^4.5.5
     version: 4.5.5(typescript@5.4.2)
@@ -604,6 +610,14 @@ packages:
     requiresBuild: true
     dev: false
     optional: true
+
+  /@fontsource/poppins@5.0.12:
+    resolution: {integrity: sha512-0qzBxtIJLh82iMJ9pCXKYwGs1zyS+jyUmwVJ59+JdYnEaFVkDsxVOk9yDWfVOs14ALUneodU2m5YSGma6dCYCw==}
+    dev: false
+
+  /@fontsource/raleway@5.0.17:
+    resolution: {integrity: sha512-JQ86C+y7jSnaxKaqhYX5i6suc7IgUvAkVnP+Z7iWvtrZRl94nXzUU89E84eMq6tCOmbBin/uvtAGfgdJGskT1A==}
+    dev: false
 
   /@isaacs/cliui@8.0.2:
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
