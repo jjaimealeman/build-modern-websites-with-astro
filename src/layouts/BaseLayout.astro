@@ -1,4 +1,6 @@
 ---
+import Nav from "@/components/Nav.astro";
+import Footer from "@/components/Footer.astro";
 import "../styles/global.css";
 import BaseHead from "./BaseHead.astro";
 ---
@@ -6,8 +8,10 @@ import BaseHead from "./BaseHead.astro";
 <html lang="en">
   <BaseHead {...Astro.props} />
   <body>
-    <main class="max-w-6xl mx-auto border-2 border-zinc-500 rounded-lg m-6 p-8">
+    <Nav />
+    <main class="">
       <slot />
     </main>
+    <Footer />
   </body>
 </html>
