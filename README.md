@@ -28,3 +28,8 @@ h1 {
     font-family: "Poppins", sans-serif;
 }
 ```
+
+## INSTALL ICONS
+```sh
+pnpm astro add astro-icon
+```
