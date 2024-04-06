@@ -1,23 +1,101 @@
-<section aria-label="Contact Form">
-  <form>
-    <button>Submit</button>
-  </form>
+---
+import { Image } from "astro:assets";
+import jaime from "@/assets/avatar2.webp";
+import Heading from "./ui/Heading.astro";
+---
+
+<section class="relative" aria-label="Contact Form">
+  <div data-pattern></div>
+  <div class="form-wrapper">
+    <Image
+      class="headshot"
+      src={jaime}
+      alt="Jaime Aleman"
+      width="700"
+      format="avif"
+    />
+    <form id="contact-form">
+      <Heading tagName="h3" size="h3">Let's Connect</Heading>
+      <p>
+        reach out below Lorem ipsum dolor sit amet consectetur, adipisicing
+        elit. Nulla, ex?
+      </p>
+      <div class="input-wrapper">
+        <label for="name">First Name</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="e.g. Jaime Aleman"
+        />
+      </div>
+      <div class="input-wrapper">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="e.g. jaime@email.com"
+        />
+      </div>
+      <button class="btn primary" type="submit">Contact ME</button>
+    </form>
+    <p class="message"></p>
+  </div>
 </section>
 
 <script>
-  const form = document.querySelector("form") as HTMLFormElement;
+  const contactForm = document.querySelector(
+    "#contact-form"
+  ) as HTMLFormElement;
+  const messageParagraph = document.querySelector(
+    ".message"
+  ) as HTMLParagraphElement;
 
-  form.addEventListener("submit", async (e) => {
+  const updateMessage = (message: string, type: "error" | "success") => {
+    messageParagraph.classList.add(type);
+    messageParagraph.textContent = message;
+    setTimeout(() => {
+      messageParagraph.textContent = "";
+      messageParagraph.classList.remove(type);
+    }, 3000);
+  };
+
+  contactForm.addEventListener("submit", async (e) => {
     e.preventDefault();
-    await fetch("http://localhost:3000/contacts", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: "jaime",
-        email: "jaime@email.com",
-      }),
-    });
+    const formData = new FormData(contactForm);
+    const { name, email } = Object.fromEntries(formData);
+
+    // Note: more validation!
+    if (!name || typeof name !== "string" || name.length < 2) {
+      return updateMessage("Please enter a valid name", "error");
+    }
+    if (!email || typeof email !== "string" || !email.includes("@")) {
+      return updateMessage("Please enter a valid email", "error");
+    }
+
+    try {
+      const res = await fetch("http://localhost:3000/contacts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email }),
+      });
+      if (!res.ok) {
+        throw new Error("Response was not OK");
+      }
+      contactForm.reset();
+      return updateMessage("Thanks for reaching out!", "success");
+    } catch (e) {
+      if (e instanceof Error) {
+        console.error(e.message);
+        return updateMessage(e.message, "error");
+      }
+      return updateMessage(
+        "Something went wrong. Please try again later.",
+        "error"
+      );
+    }
   });
 </script>
