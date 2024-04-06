@@ -1,0 +1,23 @@
+---
+// Astro tools
+import { Image } from "astro:assets";
+
+// Components
+import Heading from "@/components/ui/Heading.astro";
+import Link from "@/components/ui/Link.astro";
+
+// Assets
+import jaime from "@/assets/avatar2.webp";
+---
+
+<header class="hero-not-found" aria-label="Introduction to Jaime">
+  <Image class="avatar" src={jaime} alt="Jaime Aleman" width={200} />
+  <Heading tagName="h1" size="h2">YOU must be LOST!</Heading>
+  <p class="">
+    OOPS! The page you are looking for doesn't seem to exist, or may have moved.
+  </p>
+  <div class="">
+    <Link href="#" variant="secondary">Download CV</Link>
+    <Link href="/">Go back Home.</Link>
+  </div>
+</header>
