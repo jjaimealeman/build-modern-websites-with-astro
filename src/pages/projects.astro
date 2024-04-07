@@ -1,13 +1,19 @@
 ---
 export const prerender = false;
 
-import BaseLayout from "@/layouts/BaseLayout.astro";
-import Hero from "@/components/projects/Hero.astro";
-import ContactForm from "@/components/ContactForm.astro";
-import ProjectTile from "@/components/ui/ProjectTile.astro";
+// astro tools
 import { getCollection } from "astro:content";
 import { Icon } from "astro-icon/components";
 
+// layout
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+// components
+import Hero from "@/components/projects/Hero.astro";
+import ContactForm from "@/components/ContactForm.astro";
+import ProjectTile from "@/components/ui/ProjectTile.astro";
+
+// collections
 const projects = await getCollection("projects");
 const allTools = await getCollection("tools");
 ---
