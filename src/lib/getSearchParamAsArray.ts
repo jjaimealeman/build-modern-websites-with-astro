@@ -4,7 +4,6 @@ export default function getSearchParamAsArray(url: URL, key: string) {
   //   console.log(url);
   const params = new URLSearchParams(url.search);
   const value = params.get(key);
-  console.log("🚀 ~ getSearchParamAsArray ~ value:", value);
 
   if (!value) {
     return [];
