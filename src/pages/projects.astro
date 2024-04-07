@@ -12,10 +12,21 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import Hero from "@/components/projects/Hero.astro";
 import ContactForm from "@/components/ContactForm.astro";
 import ProjectTile from "@/components/ui/ProjectTile.astro";
+import getSearchParamAsArray from "@/lib/getSearchParamAsArray";
 
 // collections
-const projects = await getCollection("projects");
+let projects = await getCollection("projects");
 const allTools = await getCollection("tools");
+
+const filterItems = getSearchParamAsArray(Astro.url, "tools");
+// console.log(filterItems);
+
+if (filterItems.length > 0) {
+  projects = projects.filter((project) => {
+    const projectTools = project.data.icons.map((t) => t.id);
+    return filterItems.some((i) => projectTools.includes(i));
+  });
+}
 ---
 
 <BaseLayout title="Projects Page" description="a page of projects">
@@ -25,11 +36,19 @@ const allTools = await getCollection("tools");
     <div class="filter-wrapper">
       <div class="columns">
         <p>Filter by tools:</p>
-        <!-- check if there are filters -->
-        <button class="btn badge relative" aria-pressed="true">
-          <Icon class="close" name="icon--close" aria-hidden="true" size={18} />
-          <span>Clear All</span>
-        </button>
+        {
+          filterItems.length > 0 && (
+            <button class="btn badge relative" aria-pressed="true">
+              <Icon
+                class="close"
+                name="icon--close"
+                aria-hidden="true"
+                size={18}
+              />
+              <span>Clear All</span>
+            </button>
+          )
+        }
       </div>
       <ul class="">
         {
@@ -38,14 +57,16 @@ const allTools = await getCollection("tools");
               <button
                 class="btn badge relative"
                 data-tool="t.id"
-                aria-pressed="true">
+                aria-pressed={filterItems.includes(t.id)}>
                 <span>{t.data.title}</span>
-                <Icon
-                  class="close"
-                  name="icon--close"
-                  aria-hidden="true"
-                  size={18}
-                />
+                {filterItems.includes(t.id) && (
+                  <Icon
+                    class="close"
+                    name="icon--close"
+                    aria-hidden="true"
+                    size={18}
+                  />
+                )}
               </button>
             </li>
           ))
