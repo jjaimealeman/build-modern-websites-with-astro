@@ -9,7 +9,7 @@ import BaseHead from "./BaseHead.astro";
   <BaseHead {...Astro.props} />
   <body>
     <Nav />
-    <main class="">
+    <main class="" transition:animate="fade">
       <slot />
     </main>
     <Footer />

@@ -1,8 +1,7 @@
 ---
 import { baseData } from "@/data/siteData";
-import { string } from "astro/zod";
-// import "@fontsource/raleway";
 import "@fontsource/poppins";
+import { ViewTransitions } from "astro:transitions";
 
 type Props = {
   title?: string;
@@ -19,4 +18,5 @@ const { title = baseData.title, description = baseData.description } = Astro.pro
   <meta name="generator" content={Astro.generator} />
   <meta name="description" content={description} />
   <title>{title}</title>
+  <ViewTransitions />
 </head>
