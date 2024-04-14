@@ -33,3 +33,14 @@ h1 {
 ```sh
 pnpm astro add astro-icon
 ```
+
+---
+
+Saturday, April 13, 2024 @ 07:39:48 PM
+
+## To Do After
+- AFTER DEPLOYMENT, add integration sitemap
+  - https://docs.astro.build/en/guides/integrations-guide/
+- also, RSS FEED
+- toggle dark/light
+-
