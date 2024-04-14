@@ -5,9 +5,6 @@ type Props = {
 const { pubDate } = Astro.props;
 ---
 
-<!-- <time class="text-accent font-bold" datetime={pubDate.toISOString()}>
-  {pubDate.toLocaleDateString()}</time
-> -->
 <time class="text-accent font-bold" datetime={pubDate.toISOString()}>
   {
     pubDate
@@ -15,7 +12,5 @@ const { pubDate } = Astro.props;
         month: "long",
         day: "2-digit",
         year: "numeric",
-      })
-      .replace(",", "")
-  }
+      })}
 </time>
