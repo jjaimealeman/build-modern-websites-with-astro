@@ -1,0 +1,57 @@
+---
+import FormattedDate from "@/components/ui/FormattedDate.astro";
+import Heading from "@/components/ui/Heading.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import type { GetStaticPaths } from "astro";
+import { Image } from "astro:assets";
+import jaime from "@/assets/avatar2.webp";
+// import type { CollectionEntry } from "astro:content";
+// import { getCollection, getEntry } from "astro:content";
+import { type CollectionEntry, getCollection } from "astro:content";
+
+export const getStaticPaths = (async () => {
+  const allPosts = await getCollection("posts", ({ data }) => !data.isDraft);
+  return allPosts.map((p) => ({
+    params: {
+      slug: p.slug,
+    },
+    props: {
+      post: p,
+    }
+  }))
+  //
+}) satisfies GetStaticPaths;
+
+type Props = {
+  post: CollectionEntry<"posts">
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+const { title, pubDate, description } = post.data;
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="blog-metadata" aria-label="Post Metadata">
+    <header class="">
+      <FormattedDate pubDate={pubDate} />
+      <Heading tagName="h1" size="h3">{title}</Heading>
+      <p class="">{description}</p>
+    </header>
+    <Image class="hero-image" src={post.data.image} alt={title} width={1000} height={400} />
+  </section>
+  <section class="blog-content" aria-label="Post Content">
+    <Content />
+  </section>
+  <section class="author-metadata" aria-label="Author">
+    <!-- image -->
+    <Image class="avatar" src={jaime} alt="Jaime Aleman" width={150} height={150} />
+
+    <div class="border-l-4 border-[var(--color-accent)] pl-8">
+      <Heading tagName="h2" size="h3"> hey, hi, hola, howdy - Jaime here! </Heading>
+      <p>
+
+        I create visually appealing websites using code and artistic expression. I aim to create websites that are both functional and aesthetically pleasing. </p>
+    </div>
+  </section>
+</BaseLayout>

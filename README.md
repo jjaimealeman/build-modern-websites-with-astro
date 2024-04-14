@@ -1,47 +1,56 @@
-# Astro Starter Kit: Minimal
+This is the project built from Coding In Public paid course https://learnastro.dev/
+
+> "This is my ~~rifle~~ _Astro site_. There are many like it, but this one is mine."
+
+This is the full version by Chris Pennington, author of the course.
+https://astro-portfolio-site.netlify.app/
+
+---
+
+## _This is mine!_
+
+This `readme` is just a short list of what I have done to my own version of the project.
 
 ```sh
-npm create astro@latest -- --template minimal
+npm create astro@latest
+pnpm astro add tailwind
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+### INSTALL FONTS
+https://docs.astro.build/en/guides/fonts/#using-fontsource
+```sh
+pnpm add @fontsource-variable/raleway
+pnpm add @fontsource/poppins
+```
+```js
+// src/layouts/BaseHead.astro
+import '@fontsource-variable/raleway';
+import '@fontsource/poppins';
+```
+```css
+/* src/styles/global.css */
+body {
+  font-family: 'Poppins', sans-serif;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Raleway Variable', sans-serif;
+}
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+### INSTALL ICONS
+```sh
+pnpm astro add astro-icon
+```
 
-Any static assets, like images, can be placed in the `public/` directory.
+---
 
-## 🧞 Commands
+<!-- Saturday, April 13, 2024 @ 07:39:48 PM -->
 
-All commands are run from the root of the project, from a terminal:
+## To Do After
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- AFTER DEPLOYMENT, add integration sitemap
+  - https://docs.astro.build/en/guides/integrations-guide/sitemap/
+- also, RSS FEED
+- toggle dark/light
+-

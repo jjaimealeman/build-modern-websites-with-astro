@@ -1,0 +1,31 @@
+---
+import { baseData, socialData } from "@/data/siteData";
+import { Icon } from "astro-icon/components";
+---
+
+<footer class="">
+  <div>
+    <p>
+      &copy; <span class="copyright">{new Date().getFullYear()}</span>
+      <a href={baseData.URL} class="inline">{baseData.title}</a> &mdash;
+      {baseData.description}
+    </p>
+
+    <ul>
+      {
+        socialData.map(({ href, title, icon }) => (
+          <li>
+            <a href={href} target="_blank" aria-label={title} title={title}>
+              <Icon name={icon} size={24} />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</footer>
+
+<script>
+  const copyrightSpan = document.querySelector(".copyright") as HTMLSpanElement;
+  copyrightSpan.textContent = new Date().getFullYear().toString();
+</script>

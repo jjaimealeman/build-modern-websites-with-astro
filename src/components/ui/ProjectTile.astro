@@ -1,0 +1,42 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import Heading from "./Heading.astro";
+import { Icon } from "astro-icon/components";
+import { getEntries } from "astro:content";
+
+const { data } = Astro.props;
+
+type Props = {
+  data: CollectionEntry<"projects">["data"];
+};
+
+const { title, url, icons, thumbnail } = data;
+
+const iconData = await getEntries(icons);
+---
+
+<article class="project-tile" aria-label={title}>
+  <a href={url}>
+    <!-- image -->
+    <Image src={thumbnail} alt={title} width={400} format="avif" /><div
+      class="contents">
+      <div class="columns">
+        <!-- heading -->
+        <Heading tagName="h3" size="h4">{title}</Heading>
+        <!-- icon -->
+        <Icon name="icon--external-link" size={25} />
+      </div>
+      <!-- ul -->
+      <ul>
+        {
+          iconData.map(({ data }) => (
+            <li>
+              <Icon name={data.icon} title={data.icon} aria-label={data.icon} />
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </a>
+</article>

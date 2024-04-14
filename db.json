@@ -1,0 +1,24 @@
+{
+  "contacts": [
+    {
+      "id": "775e",
+      "name": "chris",
+      "email": "email@email.com"
+    },
+    {
+      "id": "70ff",
+      "name": "jaime",
+      "email": "jaime@email.com"
+    },
+    {
+      "id": "e700",
+      "name": "adsv",
+      "email": "jaime@email.com"
+    },
+    {
+      "id": "b799",
+      "name": "jammo",
+      "email": "jammo@jammo.com"
+    }
+  ]
+}
