@@ -1,0 +1,76 @@
+---
+// ASTRO TOOLS
+import { Image } from "astro:assets";
+// import { getEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import type { GetStaticPaths } from "astro";
+
+// COMPONENTS
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PostCard from "@/components/ui/PostCard.astro";
+
+// DATA
+// const postEntry = await getEntry("posts", "bring-out-your-inner-artist");
+// const allPosts = await getCollection("posts");
+// const allPosts = await getCollection("posts", ({ data }) => data.isDraft !== true);
+// const allPosts = await getCollection("posts", ({ data }) => !data.isDraft);
+
+// ASSETS
+import jaime from "@/assets/avatar2.webp";
+import Heading from "@/components/ui/Heading.astro";
+import Link from "@/components/ui/Link.astro";
+
+export const getStaticPaths = (async ({ paginate }) => {
+  // data
+  const allPosts = await getCollection("posts", ({ data }) => !data.isDraft);
+  return paginate(
+    allPosts.sort(
+      (a, b) =>
+        new Date(b.data.pubDate).getUTCDate() -
+        new Date(a.data.pubDate).getUTCDate()
+    ),
+    {
+      pageSize: 2,
+    }
+  );
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+---
+
+<BaseLayout title=`My Blog | page ${page.currentPage}` description="bring out">
+  <!--  -->
+  <section class="" aria-label="blog posts">
+    <div class="blog-wrapper">
+      <div class="columns">
+        <Image class="avatar" src={jaime} alt="Jaime Aleman" width={150} height={150} />
+        <div class="rows">
+          <Heading tagName="h1" size="h2">My Blog</Heading />
+            <!-- PAGE PLACEHOLDER -->
+            <p class="uppercase text-accent"><strong>Page {page.currentPage}</strong></p>
+          <div class="columns">
+            <p>
+              <!-- I create visually appealing websites using code and artistic expression. I aim to create websites that are both functional and aesthetically pleasing. -->
+              I create visually appealing websites using code and artistic expression.
+          </div>
+        </div>
+      </div>
+      <div class="grid-wrapper">
+        <!-- <PostCard post={postEntry} /> -->
+        {page.data.map(p => <PostCard post={p} />)}
+      </div>
+      <div class="pagination">
+        {
+          page.url.prev && (
+            <Link href={page.url.prev} variant="badge"> previous </Link>
+          )
+        }
+        {
+          page.url.next && (
+            <Link href={page.url.next} variant="badge"> next </Link>
+          )
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>
