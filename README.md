@@ -17,28 +17,37 @@ pnpm astro add tailwind
 ```
 
 ### INSTALL FONTS
+
 https://docs.astro.build/en/guides/fonts/#using-fontsource
+
 ```sh
 pnpm add @fontsource-variable/raleway
 pnpm add @fontsource/poppins
 ```
+
 ```js
 // src/layouts/BaseHead.astro
-import '@fontsource-variable/raleway';
-import '@fontsource/poppins';
+import "@fontsource-variable/raleway";
+import "@fontsource/poppins";
 ```
+
 ```css
 /* src/styles/global.css */
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Raleway Variable', sans-serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Raleway Variable", sans-serif;
 }
 ```
 
-
 ### INSTALL ICONS
+
 ```sh
 pnpm astro add astro-icon
 ```
@@ -53,4 +62,5 @@ pnpm astro add astro-icon
   - https://docs.astro.build/en/guides/integrations-guide/sitemap/
 - also, RSS FEED
 - toggle dark/light
--
+- opengraph images
+- > pnpx astro add astro-tunnel
