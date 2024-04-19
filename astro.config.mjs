@@ -7,11 +7,13 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://build-modern-websites-with-astro.netlify.app/',
+  site: 'https://build-modern-websites-with-astro.netlify.app',
   prefetch: {
     prefetchAll: true
   },
-  integrations: [tailwind(), icon(), sitemap()],
+  integrations: [tailwind(), icon(), sitemap({
+    filter: page => page !== 'https://build-modern-websites-with-astro.netlify.app/test'
+  })],
   output: "hybrid",
   adapter: netlify()
 });
