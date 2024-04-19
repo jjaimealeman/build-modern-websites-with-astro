@@ -64,3 +64,5 @@ pnpm astro add astro-icon
 - toggle dark/light
 - opengraph images
 - > pnpx astro add astro-tunnel
+- GLAZE for animations & transitions https://glaze.dev/
+-
