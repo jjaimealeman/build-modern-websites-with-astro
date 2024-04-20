@@ -20,5 +20,6 @@ const { title = baseData.title, description = baseData.description } = Astro.pro
   <meta name="description" content={description} />
   <title>{title}</title>
   <link rel="sitemap" href="https://build-modern-websites-with-astro.netlify.app/sitemap-index.xml">
+  <link rel="alternate" href={`${Astro.site}rss.xml`} type="application/rss+xml" title={baseData.title}>
   <ViewTransitions />
 </head>
