@@ -1,7 +1,8 @@
 ---
+import BaseLayout from "@/layouts/BaseLayout.astro";
 // https://docs.astro.build/en/guides/images/#widths
-import { Image, Picture } from "astro:assets";
-import jaime from "@/assets/avatar2.webp";
+// import { Image, Picture } from "astro:assets";
+// import jaime from "@/assets/avatar2.webp";
 
 import TWsizeindicator from "@/components/TWsizeindicator.astro";
 
@@ -9,8 +10,13 @@ import MyCustomImageComponent from "../components/MyCustomImageComponent.astro";
 import mobileImage from "@/assets/test1.png";
 import desktopImage from "@/assets/test2.png";
 
+import { db, Links } from "astro:db";
+const links = await db.select().from(Links)
+
 ---
-<TWsizeindicator />
+
+<BaseLayout title="test" description="testing things out">
+  <TWsizeindicator />
 
 
 <!-- <Image class="pt-10" src={jaime} alt="Jaime" width={200} /> -->
@@ -32,3 +38,16 @@ import desktopImage from "@/assets/test2.png";
   desktopImgUrl={desktopImage}
   alt="user profile picture"
 />
+
+{
+  links.map((link) => (
+    <div>
+      <time datetime={link.date.toISOString()}>{link.date.toLocaleDateString()}</time>
+      <a href={link.url}>{link.title}</a>
+      <p>Is Read: {link.isRead ? "✅" : "❌"}</p>
+      <p>Is Read: {link.isRead ? "Yes" : "No"}</p>
+    </div>
+  ))
+}
+
+</BaseLayout>
