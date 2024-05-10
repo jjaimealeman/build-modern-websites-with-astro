@@ -5,19 +5,19 @@ export default async function seed() {
   await db.insert(Links).values([
     {
       title: "Title",
-      url: "google.com",
+      url: "https://google.com",
       isRead: true,
       upvoteNum: 3,
     },
     {
       title: "Another Title",
-      url: "example.com",
+      url: "https://example.com",
       isRead: false,
       upvoteNum: 5,
     },
     {
       title: "Yet Another Title",
-      url: "github.com",
+      url: "https://github.com",
       isRead: true,
       upvoteNum: 10,
     },
