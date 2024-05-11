@@ -45,7 +45,7 @@ const links = await db.select().from(Links)
       <time datetime={link.date.toISOString()}>{link.date.toLocaleDateString()}</time>
       <a href={link.url}>{link.title}</a>
       <p>Is Read: {link.isRead ? "✅" : "❌"}</p>
-      <p>Is Read: {link.isRead ? "Yes" : "No"}</p>
+      <p>Is Cool: {link.isCool ? "Yes" : "No"}</p>
     </div>
   ))
 }
