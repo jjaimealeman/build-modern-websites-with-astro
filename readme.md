@@ -58,6 +58,8 @@ pnpm astro add astro-icon
 
 ## To Do After
 
+TODO:
+
 - AFTER DEPLOYMENT, add integration sitemap
   - https://docs.astro.build/en/guides/integrations-guide/sitemap/
 - also, RSS FEED
@@ -65,4 +67,5 @@ pnpm astro add astro-icon
 - opengraph images
 - > pnpx astro add astro-tunnel
 - GLAZE for animations & transitions https://glaze.dev/
+- adding something just for testing `gitsigns` in my new neovim config.
 -

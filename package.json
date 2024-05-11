@@ -4,14 +4,16 @@
   "version": "1.6.0",
   "scripts": {
     "dev": "astro dev",
+    "devdb": "astro dev --remote",
     "start": "astro dev",
-    "build": "astro check && astro build",
+    "build": "astro check && astro build --remote",
     "preview": "astro preview",
     "astro": "astro",
     "json": "npx json-server --watch db.json"
   },
   "dependencies": {
     "@astrojs/check": "^0.5.9",
+    "@astrojs/db": "^0.11.1",
     "@astrojs/netlify": "^5.2.0",
     "@astrojs/node": "^8.2.5",
     "@astrojs/rss": "^4.0.5",
