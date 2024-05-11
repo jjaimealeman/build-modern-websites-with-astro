@@ -6,8 +6,9 @@ const Links = defineTable({
     title: column.text(),
     url: column.text(),
     date: column.date({ default: NOW }),
-    isRead: column.boolean(),
+    isRead: column.boolean({ default: true }),
     upvoteNum: column.number(),
+    isCool: column.boolean({ default: true }),
   },
 });
 
