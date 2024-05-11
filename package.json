@@ -4,8 +4,9 @@
   "version": "1.6.0",
   "scripts": {
     "dev": "astro dev",
+    "devdb": "astro dev --remote",
     "start": "astro dev",
-    "build": "astro check && astro build",
+    "build": "astro check && astro build --remote",
     "preview": "astro preview",
     "astro": "astro",
     "json": "npx json-server --watch db.json"
