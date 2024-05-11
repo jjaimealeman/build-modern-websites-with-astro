@@ -3,7 +3,6 @@ import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
 import netlify from "@astrojs/netlify";
 import sitemap from "@astrojs/sitemap";
-import node from "@astrojs/node";
 
 import db from "@astrojs/db";
 
@@ -21,8 +20,5 @@ export default defineConfig({
   //   mode: "standalone"
   // }),
   output: "server",
-  adapter: node({
-    mode: "netlify()"
-  }),
-
+  adapter: netlify(),
 });
